@@ -3,6 +3,7 @@
         <style>
             h1{
                 text-align: center;
+                font-size: 40px;
             }
             .Titolone{
                 background-color: red;
@@ -40,18 +41,31 @@
                 margin-bottom: 10px;
             }
             .Bottone{
-                width: 80px;
+                width: 110px;
+                text-align: center;
                 height: 130px;
                 background-color: orange;
                 border: 2px solid black;
                 border-radius: 10px;
                 cursor: pointer;
             }
+            #Scritta{
+                margin-top: 45px;
+                font-size: 30px;
+                font-family: 'Trebuchet MS';
+            }
             .Bottone:hover{
+                text-align: center;
 		        background-color: #4CAF90;
 		        padding: 10px;
 		        transition: background-color 1s;
 		        box-shadow: 10px 10px 20px gray;
+            }
+            .Titolone:hover{
+                text-align: center;
+                background-color: red;
+                cursor: pointer;
+                padding: 1px;
             }
         </style>
     </head>
@@ -62,11 +76,11 @@
         <div class="Contenitore">
             <iframe src=""></iframe>
             <div class="Riga">
-                <div class="Bottone"></div>
-                <div class="Bottone"></div>
-                <div class="Bottone"></div>
-                <div class="Bottone"></div>
-                <div class="Bottone"></div>
+                <div class="Bottone"><p id="Scritta">Libro 1</p></div>
+                <div class="Bottone"><p id="Scritta">Libro 2</p></div>
+                <div class="Bottone"><p id="Scritta">Libro 3</p></div>
+                <div class="Bottone"><p id="Scritta">Libro 4</p></div>
+                <div class="Bottone"><p id="Scritta">Libro 5</p></div>
             </div>
 
         </div>
