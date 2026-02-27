@@ -1,51 +1,31 @@
 <html>
 <head>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="./css/style.css">
     <style>
-
-.Contenitore{
-    border: 5px inset black;
-    margin: 0 auto;
-    width: 90%;
-    height: auto;
-    border-radius: 10px;
-    padding: 20px;
-    display: flex;
-    justify-content: center; 
-    align-items: center;     
-    gap: 20px;               /* Spazio tra l'iframe e i pulsanti */
-}
-
-.Riga {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.Pulsante {
-    flex: 0 0 100px; /* Imposta una larghezza fissa identica per i lati */
-    text-align: center;
-}
-
-
+            body {
+                    background-image: url('./img/Background1.png');
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    background-attachment: fixed;
+                }
+        .Titolone{
+                background-color: rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
-    <body>
-        <div class="Titolone" margin-top: 20px;>
+<body>
+    <div>
+    </div>
+    <div class="Titolone">
         <h1>Star Wars: Death Star</h1>
-                </div>
-            </div>
+    </div>
+    <div class="Contenitore">
+        <div class="Pulsante"><img src="./img/Freccia2.png" alt="Freccia sinistra"></div>
+        <iframe src=""></iframe>
+        <div class="Riga">
+            <div class="Pulsante"><img src="./img/Freccia1.png" alt="Freccia destra"></div>
         </div>
-        </div>
-        
-        <div class="Contenitore">
-                            <div class="Pulsante"><img src="./img/Freccia2.png"></div>
-            <iframe src=""></iframe>
-            <div class="Riga">
-
-                <div class="Pulsante"><img src="./img/Freccia1.png"></div>
-            </div>
-
-    </body>
-    
+    </div>
+</body>
 </html>
