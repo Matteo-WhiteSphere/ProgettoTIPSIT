@@ -32,14 +32,6 @@
                 border-radius: 10px;
                 padding: 20px;
             }
-            .Titoletti{
-                border: 3px inset black;
-                border-radius: 10px;
-                height: 20%;
-                width: 30%;
-                margin: 0 auto;
-                text-align: center;
-            }
             iframe{
                 width: 100%;
                 height: 400px;
@@ -50,18 +42,43 @@
             .Riga{
                 display: flex;
                 justify-content: center;
-                gap: 80px;
+                gap: 40px;
                 margin-top: 30px;
                 margin-bottom: 10px;
             }
             .Bottone{
-                width: 150px;
-                text-align: center;
+                width: 200px;
                 height: 130px;
                 background-color: orange;
                 border: 2px solid black;
                 border-radius: 10px;
                 cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+            }
+            .Bottone a{
+                width: 100%;
+                height: 100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                color: black;
+            }
+            .scritta{
+                margin-top: 45px;
+                font-size: 30px;
+                font-family: 'Trebuchet MS';
+                color: black;
+                text-decoration: none;
+            }
+            .Bottone:hover{
+                background-color: #4CAF90;
+                padding: 10px;
+                transition: background-color 1s;
+                box-shadow: 10px 10px 20px gray;
             }
             .sinistra{
                 position: fixed;
@@ -73,19 +90,9 @@
                 position: fixed;
                 top: 250px;
             }
-            #Scritta{
-                margin-top: 45px;
-                font-size: 30px;
-                font-family: 'Trebuchet MS';
+            iframe {
+                overflow: hidden;
             }
-            .Bottone:hover{
-                text-align: center;
-		        background-color: #4CAF90;
-		        padding: 10px;
-		        transition: background-color 1s;
-		        box-shadow: 10px 10px 20px gray;
-            }
-            
         </style>
     </head>
     <body>
@@ -97,15 +104,30 @@
         <div class="Contenitore">
             <iframe name="Copertine"></iframe>
             <div class="Riga">
-                <div class="Bottone"><p id="Scritta">Libro 1</p></div>
-                <div class="Bottone"><p id="Scritta">Libro 2</p></div>
-                <div class="Bottone"><p id="Scritta">Libro 3</p></div>
                 <div class="Bottone">
-                    <a href="img/avventura.jpg" target="Copertine">Avventura</a>
+                    <p class="scritta">Libro 1</p>
                 </div>
                 <div class="Bottone">
-                    <p id="Scritta">Libro 5</p></div>
+                    <a href="img/Fantascienza.jpg" target="Copertine">
+                        <p class="scritta">Fantascienza</p>
+                    </a>
                 </div>
+                <div class="Bottone">
+                    <a href="img/Thriller.jpg" target="Copertine">
+                        <p class="scritta">Thriller</p>
+                    </a>
+                </div>
+                <div class="Bottone">
+                    <a href="img/avventura.jpg" target="Copertine">
+                        <p class="scritta">Avventura</p>
+                    </a>
+                </div>
+                <div class="Bottone">
+                    <a href="img/Manga.png" target="Copertine">
+                        <p class="scritta">Manga</p>
+                    </a>
+                </div>
+            </div>
         </div>
     </body>
 </html>
