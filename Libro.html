@@ -12,18 +12,127 @@
         .Titolone{
                 background-color: rgba(255, 255, 255, 0.5);
         }
+        
+        /* Animazioni per l'effetto di sfogliatura delle pagine */
+        .iframe-container {
+            position: relative;
+            width: 120%;
+            height: 750px;
+            overflow: hidden;
+            border-radius: 10px;
+            margin: 0 auto;
+        }
+        
+        #paginaLibro {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out;
+            object-fit: contain;
+        }
+        
+        /* Animazione pagina che si sfoglia a destra (pagina successiva) */
+        .page-flip-right {
+            animation: flipPageRight 0.8s ease-in-out;
+        }
+        
+        /* Animazione pagina che si sfoglia a sinistra (pagina precedente) */
+        .page-flip-left {
+            animation: flipPageLeft 0.8s ease-in-out;
+        }
+        
+        @keyframes flipPageRight {
+            0% {
+                transform: translateX(0) rotateY(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-100%) rotateY(-20deg);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes flipPageLeft {
+            0% {
+                transform: translateX(0) rotateY(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(100%) rotateY(20deg);
+                opacity: 0;
+            }
+        }
+        
+        /* Effetto di entrata per la nuova pagina */
+        .page-enter-right {
+            animation: enterFromRight 0.6s ease-in-out;
+        }
+        
+        .page-enter-left {
+            animation: enterFromLeft 0.6s ease-in-out;
+        }
+        
+        @keyframes enterFromRight {
+            0% {
+                transform: translateX(100%) rotateY(-20deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0) rotateY(0deg);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes enterFromLeft {
+            0% {
+                transform: translateX(-100%) rotateY(20deg);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0) rotateY(0deg);
+                opacity: 1;
+            }
+        }
+        
+        /* Stile per l'indicatore di caricamento durante l'animazione */
+        .loading-indicator {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            color: #333;
+            display: none;
+        }
     </style>
 </head>
+<!-- Script JavaScript per gestire la navigazione tra le pagine del libro -->
+<script src="./Java.js"></script>
 <body>
+    <!-- Div vuoto per potenziali utilizzi futuri -->
     <div>
     </div>
+    <!-- Titolo della pagina - verrà aggiornato dinamicamente con la pagina corrente -->
     <div class="Titolone">
         <h1>Star Wars: Death Star</h1>
     </div>
+    <!-- Contenitore principale che include i controlli di navigazione e l'iframe per le pagine -->
     <div class="Contenitore">
+        <!-- Pulsante freccia sinistra - Per navigare alla pagina precedente -->
         <div class="Pulsante"><img src="./img/Freccia2.png" alt="Freccia sinistra"></div>
-        <iframe src=""></iframe>
+        <!-- Container per l'immagine con le animazioni di sfogliatura -->
+        <div class="iframe-container">
+            <!-- Immagine che mostrerà le pagine del libro - verrà aggiornata dinamicamente con animazioni -->
+            <img id="paginaLibro" src="" alt="Pagina del libro">
+            <!-- Indicatore di caricamento (mostrato durante le animazioni) -->
+            <div class="loading-indicator"> Sfogliando...</div>
+        </div>
+        <!-- Riga contenente i pulsanti di navigazione -->
         <div class="Riga">
+            <!-- Pulsante freccia destra - Per navigare alla pagina successiva -->
             <div class="Pulsante"><img src="./img/Freccia1.png" alt="Freccia destra"></div>
         </div>
     </div>
