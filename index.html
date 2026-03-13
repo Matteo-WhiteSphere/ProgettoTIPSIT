@@ -28,16 +28,25 @@
                 background-color: rgba(255, 255, 255, 0.2);
                 margin: 0 auto;
                 width: 70%;
-                height: 580px;
+                height: 730px;
                 border-radius: 10px;
                 padding: 20px;
             }
-            iframe{
+            .iframe-container {
+                position: relative;
                 width: 100%;
-                height: 400px;
-                border: 2px solid black;
+                height: 550px;
+                overflow: hidden;
                 border-radius: 10px;
-                background-color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #paginaLibro {
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                display: block;
             }
             .Riga{
                 display: flex;
@@ -90,9 +99,6 @@
                 position: fixed;
                 top: 250px;
             }
-            iframe{
-                overflow: hidden;
-            }
         </style>
     </head>
     <body>
@@ -102,34 +108,31 @@
         <img src="img/sinistra.png" width="200px" class="sinistra">
         <img src="img/destra.png" width="200px" class="destra">
         <div class="Contenitore">
-            <iframe name="Copertine"></iframe>
+            <div class="iframe-container">
+                <img id="paginaLibro" src="img/Fantascienza.jpg" alt="Immagine del libro">
+            </div>
             <div class="Riga">
-                <div class="Bottone">
-                    <a href="img/Topolino.png" target="Copertine">
-                        <p class="scritta">Topolino</p>
-                    </a>
+                <div class="Bottone" onclick="caricaImmagine('img/Topolino.png')">
+                    <p class="scritta">Topolino</p>
                 </div>
-                <div class="Bottone">
-                    <a href="img/Fantascienza.jpg" target="Copertine">
-                        <p class="scritta">Fantascienza</p>
-                    </a>
+                <div class="Bottone" onclick="caricaImmagine('img/Fantascienza.jpg')">
+                    <p class="scritta">Fantascienza</p>
                 </div>
-                <div class="Bottone">
-                    <a href="img/Thriller.jpg" target="Copertine">
-                        <p class="scritta">Thriller</p>
-                    </a>
+                <div class="Bottone" onclick="caricaImmagine('img/Thriller.jpg')">
+                    <p class="scritta">Thriller</p>
                 </div>
-                <div class="Bottone">
-                    <a href="img/avventura.jpg" target="Copertine">
-                        <p class="scritta">Avventura</p>
-                    </a>
+                <div class="Bottone" onclick="caricaImmagine('img/avventura.jpg')">
+                    <p class="scritta">Avventura</p>
                 </div>
-                <div class="Bottone">
-                    <a href="img/Manga.png" target="Copertine">
-                        <p class="scritta">Manga</p>
-                    </a>
+                <div class="Bottone" onclick="caricaImmagine('img/Manga.png')">
+                    <p class="scritta">Manga</p>
                 </div>
             </div>
         </div>
+        <script>
+            function caricaImmagine(src) {
+                document.getElementById('paginaLibro').src = src;
+            }
+        </script>
     </body>
 </html>
