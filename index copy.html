@@ -24,20 +24,91 @@
                 height: 80px;
             }
             .Contenitore{
-                                border: 5px inset white;
-                background-color: rgba(155, 155, 155, 0.2);
+
                 margin: 0 auto;
-                width: 70%;
+                width: 80%;
                 height: 810px;
                 border-radius: 10px;
                 padding: 20px;
+                display: flex;
+                gap: 20px;
+            }
+            .libri-sinistra {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-start;
+            }
+            .libri-destra {
+                display: flex;
+                flex-direction: column;
+                gap: 15px;
+                align-items: flex-end;
+            }
+            .Bottone{
+                width: 160px;
+                height: 220px;
+                border: 3px solid #8B4513;
+                border-left: 12px solid #654321;
+                outline: 2px solid #D2691E;
+                border-radius: 8px;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                margin-bottom: 10px;
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                box-shadow: 3px 3px 12px rgba(0,0,0,0.4), inset 0 0 3px rgba(0,0,0,0.2);
+                transition: transform 0.2s ease;
+                position: relative;
+            }
+            .Bottone::before {
+                content: '';
+                position: absolute;
+                top: 0px;
+                left: 1px;
+                bottom: 0px;
+                width: 2px;
+                background-color: #D2691E;
+                pointer-events: none;
+            }
+            .bottone-avventura {
+                background-image: url('img/avventura.jpg');
+                margin-top: 172px;
+                margin-left: 10px;
+                margin-bottom: 12px;
+            }
+            .bottone-manga {
+                background-image: url('img/Manga.png');
+                margin-left: -140px;
+                margin-bottom: 20px;
+            }
+            .bottone-topolino {
+                background-image: url('img/Topolino.png');
+                margin-top: -60px;
+                margin-right: 15px;
+                transform: scale(0.8);
+            }
+            .bottone-fantascienza {
+                background-image: url('img/Fantascienza.jpg');
+                margin-right: -80px;
+                transform: scale(0.8);
+                margin-top: 4px;
+            }
+            .bottone-thriller {
+                background-image: url('img/Thriller.jpg');
+                margin-right: 5px;
+                transform: scale(0.8);
             }
             .iframe-container {
                 border: 5px inset white;
                 background-color: rgba(155, 155, 155, 0.2);
-                                margin: 0 auto;
+                margin: 0 auto;
                 position: relative;
-                width: 40%;
+                width: 50px;
                 height: 635px;
                 overflow: hidden;
                 border-radius: 10px;
@@ -51,45 +122,6 @@
                 height: 100%;
                 object-fit: contain;
                 display: block;
-            }
-            .Riga{
-                display: flex;
-                justify-content: center;
-                gap: 40px;
-                margin-top: 30px;
-                margin-bottom: 10px;
-            }
-            .Bottone{
-                width: 100px;
-                height: 150px;
-                border: none !important;
-                outline: none !important;
-                border-radius: 10px;
-                cursor: pointer;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                text-decoration: none;
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                box-shadow: 2px 2px 8px rgba(0,0,0,0.3);
-                transition: transform 0.2s ease;
-            }
-            .bottone-topolino {
-                background-image: url('img/Topolino.png');
-            }
-            .bottone-thriller {
-                background-image: url('img/Thriller.jpg');
-            }
-            .bottone-fantascienza {
-                background-image: url('img/Fantascienza.jpg');
-            }
-            .bottone-avventura {
-                background-image: url('img/avventura.jpg');
-            }
-            .bottone-manga {
-                background-image: url('img/Manga.png');
             }
             .Bottone a{
                 width: 100%;
@@ -126,19 +158,22 @@
         </div>
 
         <div class="Contenitore">
+            <div class="libri-sinistra">
+                <div class="Bottone bottone-avventura" onclick="caricaImmagine('img/avventura.jpg')">
+                </div>
+                <div class="Bottone bottone-manga" onclick="caricaImmagine('img/Manga.png')">
+                </div>
+            </div>
             <div class="iframe-container">
                 <img id="paginaLibro" src="">
+                <div id="testoPlaceholder" style="position: absolute; color: white; font-size: 28px; font-family: 'Arial', sans-serif; text-align: center; background-color: rgba(0,0,0,0.6); padding: 15px 25px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">clicca su una copertina</div>
             </div>
-            <div class="Riga">
+            <div class="libri-destra">
                 <div class="Bottone bottone-topolino" onclick="caricaImmagine('img/Topolino.png')">
                 </div>
                 <div class="Bottone bottone-fantascienza" onclick="caricaImmagine('img/Fantascienza.jpg')">
                 </div>
                 <div class="Bottone bottone-thriller" onclick="caricaImmagine('img/Thriller.jpg')">
-                </div>
-                <div class="Bottone bottone-avventura" onclick="caricaImmagine('img/avventura.jpg')">
-                </div>
-                <div class="Bottone bottone-manga" onclick="caricaImmagine('img/Manga.png')">
                 </div>
             </div>
         </div>
@@ -147,6 +182,9 @@
                 // Suono di sfoglia pagina
                 const audio = new Audio('img/sfoglia.mp3');
                 audio.play();
+                
+                // Nascondi il testo placeholder
+                document.getElementById('testoPlaceholder').style.display = 'none';
                 
                 // Carica l'immagine
                 document.getElementById('paginaLibro').src = src;
