@@ -165,7 +165,7 @@
                 </div>
             </div>
             <div class="iframe-container">
-                <img id="paginaLibro" src="">
+                <img id="paginaLibro" src="" onclick="apriLibro()" style="cursor: pointer;">
                 <div id="testoPlaceholder" style="position: absolute; color: white; font-size: 28px; font-family: 'Arial', sans-serif; text-align: center; background-color: rgba(0,0,0,0.6); padding: 15px 25px; border-radius: 10px; border: 2px solid rgba(255,255,255,0.3); box-shadow: 0 4px 15px rgba(0,0,0,0.5); text-transform: uppercase; letter-spacing: 2px; font-weight: bold;">clicca su una copertina</div>
             </div>
             <div class="libri-destra">
@@ -177,10 +177,11 @@
                 </div>
             </div>
         </div>
+        
         <script>
             function caricaImmagine(src) {
                 // Suono di sfoglia pagina
-                const audio = new Audio('img/sfoglia.mp3');
+                const audio = new Audio('audio/TPSIT.mp3');
                 audio.play();
                 
                 // Nascondi il testo placeholder
@@ -188,6 +189,11 @@
                 
                 // Carica l'immagine
                 document.getElementById('paginaLibro').src = src;
+            }
+            
+            function apriLibro() {
+                // Reindirizza alla pagina del libro
+                window.location.href = 'Libro.html';
             }
         </script>
     </body>

@@ -118,6 +118,7 @@
     <!-- Titolo della pagina - verrà aggiornato dinamicamente con la pagina corrente -->
     <div class="Titolone">
         <h1>Star Wars: Death Star</h1>
+        <button id="audioButton" onclick="playAudio()" style="position: absolute; right: 20px; top: 50%; transform: translateY(-50%); background-color: rgba(255,255,255,0.8); border: 2px solid #333; border-radius: 5px; padding: 8px 15px; cursor: pointer; font-weight: bold;">🔊 Audio</button>
     </div>
     <!-- Contenitore principale che include i controlli di navigazione e l'iframe per le pagine -->
     <div class="Contenitore">
@@ -136,5 +137,19 @@
             <div class="Pulsante"><img src="./img/Freccia1.png" alt="Freccia destra"></div>
         </div>
     </div>
+    
+    <script>
+        //serve per far ripartire l'audio
+        function playAudio() {
+            const audio = new Audio('audio/TPSIT.mp3');
+            audio.play().catch(e => console.log('Audio play prevented'));
+        }
+        
+        //serve per far partire l'audio automaticamente all'avvio
+        window.addEventListener('load', function() {
+            const audio = new Audio('audio/TPSIT.mp3');
+            audio.play().catch(e => console.log('Audio autoplay prevented'));
+        });
+    </script>
 </body>
 </html>
