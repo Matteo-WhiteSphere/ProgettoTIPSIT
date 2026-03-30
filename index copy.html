@@ -180,10 +180,6 @@
         
         <script>
             function caricaImmagine(src) {
-                // Suono di sfoglia pagina
-                const audio = new Audio('audio/TPSIT.mp3');
-                audio.play();
-                
                 // Nascondi il testo placeholder
                 document.getElementById('testoPlaceholder').style.display = 'none';
                 
@@ -192,8 +188,14 @@
             }
             
             function apriLibro() {
-                // Reindirizza alla pagina del libro
-                window.location.href = 'Libro.html';
+                // Controlla quale immagine è caricata e reindirizza alla pagina corretta
+                const imgSrc = document.getElementById('paginaLibro').src;
+                
+                if (imgSrc.includes('Manga.png')) {
+                    window.location.href = 'Progetti degli altri/MANGA/manga.html';
+                } else {
+                    window.location.href = 'Libro.html';
+                }
             }
         </script>
     </body>
