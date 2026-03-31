@@ -1,0 +1,175 @@
+<html>
+    <head>
+        <style>
+
+        #copert1{
+        position:relative;
+        border:2px solid black;
+        width:35%;
+        height:80%;
+		box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    	border-radius: 4px;
+        }
+        #copert2{
+        position:relative;
+        border: 2px solid black;
+ 		box-shadow: 0px 0px 20px rgba(0,0,0,0.5);
+    	border-radius: 4px;
+        width:35%;
+        height:80%;
+        }
+        #contenitore{
+        border: 2px solid black;
+        width: 75%;
+        height: 80%;
+        margin-top: 5%;
+        margin-left:12%;
+        display: flex;
+	overflow: hidden;
+    	display: flex;
+    	justify-content: center; 
+    	align-items: center;
+	background: rgba(255,255,255,0.1);
+    	border-radius: 10px;
+    	padding: 20px;
+        }
+	#cambioModalità{
+		position: absolute;
+		left:47%;
+		margin-top:20%;
+		border-bottom: 2px solid darkred;
+       		color: #000;
+    		font-weight: bold;
+   		padding: 10px 20px;
+    		border: 2px solid black;
+    		border-radius: 8px;
+    		box-shadow: 0 0 10px rgba(0,0,0,0.6);
+    		cursor: pointer;
+    		transition: 0.2s;
+	}
+	#cambioModalità:hover {
+    		transform: scale(1.08);
+    		box-shadow: 0 0 15px rgba(0,0,0,0.8);
+	}
+        #sinistra{
+            position: absolute;
+            width: 4%;
+            height:6%;
+            left:15%;
+            top: 45%;
+	    border: none;
+	    border-radius: 50%;
+    	    background: rgba(0,0,0,0.6);
+            transition: 0.2s;
+	    font-size:45px;
+	    color:white;
+	    display: flex;
+    	    justify-content: center;
+    	    align-items: center;
+        }
+        #destra{
+            position: absolute;
+            width: 4%;
+            height:6%;
+            right:15%;
+            top: 45%;
+	    border: none;
+	    border-radius: 50%;
+    	    background: rgba(0,0,0,0.6);
+    	    transition: 0.2s;
+	    font-size:45px;
+	    color:white;
+    	    display: flex;
+    	    justify-content: center;
+    	    align-items: center;	    
+        }
+	#destra:hover{
+		cursor:pointer;
+		transform: scale(1.1);
+   		opacity: 0.8;
+	}
+	#sinistra:hover{
+		cursor:pointer;
+		transform: scale(1.1);
+    		opacity: 0.8;
+	}
+	#corpo{
+    		background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)),
+        	url("../MEDIAGIALLO/crimine.jpg");
+    		background-size: cover;
+    		background-position: center;
+    		background-repeat: no-repeat;
+    		background-attachment: fixed;
+	}
+
+
+        </style>
+            <script>
+		function aggiorna(){
+    			if(mode == 2){
+        			document.getElementById("copert1").style.display = "block";
+        			document.getElementById("copert1").src = "../MEDIAGIALLO/" + (a-1) + ".png";
+        			document.getElementById("copert2").src = "../MEDIAGIALLO/" + a + ".png";
+    			} else {
+        			document.getElementById("copert1").style.display = "none";
+        			document.getElementById("copert2").src = "../MEDIAGIALLO/" + (a-1) + ".png";
+    			}
+		}
+                var a = 1;
+                function pageflip(){
+                	if(mode == 2){
+        			a = a + 2;
+    			} else {
+        			a = a + 1;
+    			}
+			if (mode == 2){
+				if(a>11){
+				a=11;
+				}
+			}else{
+				if(a>12){
+					a=12;
+				}
+			}
+    			aggiorna();
+                }
+                function pageflip2(){
+                	if(mode == 2){
+        			a = a - 2;
+    			} else {
+        			a = a - 1;
+    			}
+			if (a < 1){
+				a=1;
+			}
+    		aggiorna();
+                }
+		var mode = 2;
+
+		function cambiaModalità() {
+    			if (mode == 2) {
+       		    		mode = 1;
+      			} else {
+         	   		mode = 2;
+      			}
+		aggiorna();
+		}
+                </script>
+        </head>
+   
+<body id="corpo">
+
+       <div id="contenitore">
+        <img src="../MEDIAGIALLO/0.png" id="copert1">
+        <img src="../MEDIAGIALLO/1.png" id="copert2">
+
+    <form>
+    <button type="button" id="sinistra" onclick="pageflip2()">❮</button>
+    <button type="button" id="destra" onclick="pageflip()">❯</button>
+	<button type="button" onclick="cambiaModalità()" id="cambioModalità">Cambia modalità</button>
+    </form>
+	</div>
+
+</body>
+
+</html>

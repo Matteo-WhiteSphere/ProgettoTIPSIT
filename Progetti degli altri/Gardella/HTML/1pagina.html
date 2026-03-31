@@ -1,0 +1,165 @@
+<html>
+<head>
+    <title>Libro 1 pagina html</title>
+    <style>
+        body{
+            background-image:url("../MEDIA/sfondo.jpg");
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        h1{
+            text-align: center;
+            font-size: 50px;
+            color: rgb(132,85,4);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+
+        .contenitore-libro{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .area-pagine{
+            width: 40%;
+        }
+
+        .pagina{
+            display: flex;
+            height: 550px;
+            justify-content: center;
+        }
+
+        .pagina img{
+            max-width: 100%;
+            height: auto;
+            cursor: pointer;
+        }
+
+        button:hover{
+            transform: scale(1.15);
+        }
+
+        .freccia{
+            width: 75%;
+            height: auto;
+        }
+
+        #numpagina{
+            text-align: center;
+            color: rgb(132,85,4);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }   
+        
+        .scorrimento{
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            border-radius: 35px;
+            border:3.5px solid rgb(132, 85, 4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .duePagine{
+            cursor: pointer;
+            width: 100px;
+            margin: 0 auto;
+            display:flex;
+            justify-content: center;
+            background-color: white;
+            border-radius: 35px;
+            border:3.5px solid rgb(132, 85, 4);
+            color: rgb(132,85,4);
+            font-family: Georgia, 'Times New Roman', Times, serif;
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="audioRiassunto" src="../MEDIA/riassunto.mp3"></audio>
+
+    <h1>Il diario che sussurrava il tesoro della curiosità</h1>
+
+    <button onclick="location.href='2pagine.html';" type="button" class="duePagine">
+        Visualizza due pagine
+    </button>
+
+    <div class="contenitore-libro">
+
+        <button class="scorrimento" onclick="scorripagina(-1)" id="sx">
+            <img class="freccia" src="../MEDIA/frecciaSX.png">
+        </button>
+
+        <div class="area-pagine">
+            <div class="pagina">
+                <img src="../MEDIA/copertina.jpg" onclick="playRiassunto()">
+            </div>
+            <div class="pagina"><img src="../MEDIA/crediti.png"></div>
+            <div class="pagina"><img src="../MEDIA/capitolo1.jpg"></div>
+            <div class="pagina"><img src="../MEDIA/capitolo2.jpg"></div>
+            <div class="pagina"><img src="../MEDIA/capitolo3.jpg"></div>
+            <div class="pagina"><img src="../MEDIA/capitolo4.jpg"></div>
+            <div class="pagina"><img src="../MEDIA/capitolo5.jpg"></div>
+            <div class="pagina"><img src="../MEDIA/capitolo6.jpg"></div>
+        </div>
+
+        <button onclick="scorripagina(1)" id="dx" class="scorrimento">
+            <img class="freccia" src="../MEDIA/frecciaDX.png">
+        </button>   
+    </div>
+
+    <p id="numpagina"></p>  
+
+    <script>
+        var i = 0;
+        var pagine = document.getElementsByClassName("pagina");
+        var numpagina = document.getElementById("numpagina");
+        var bottoneSX = document.getElementById("sx");
+        var bottoneDX = document.getElementById("dx");
+
+        for (var j = 0; j < pagine.length; j++) {
+            pagine[j].style.display = "none";
+        }
+
+        pagine[0].style.display = "flex";
+        numpagina.innerHTML = "Pagina " + (i + 1) + " di " + pagine.length;
+
+        bottoneSX.style.visibility = "hidden";
+
+        function scorripagina(direzione) {
+            pagine[i].style.display = "none";
+            i = i + direzione;
+            pagine[i].style.display = "flex";
+
+            numpagina.innerHTML = "Pagina " + (i + 1) + " di " + pagine.length;
+
+            if (i === 0) {
+                bottoneSX.style.visibility = "hidden";
+            } else {
+                bottoneSX.style.visibility = "visible";
+            }
+
+            if (i === pagine.length - 1) {
+                bottoneDX.style.visibility = "hidden";
+            } else {
+                bottoneDX.style.visibility = "visible";
+            }
+        }
+
+        function playRiassunto() {
+            var audioRiassunto = document.getElementById("audioRiassunto");
+            audioRiassunto.currentTime = 0;
+            audioRiassunto.play();
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+	<head>
+		<script>
+			var a = 0;
+			function pageflip(){
+				if(a+2<=20){
+					a = a + 2;
+					var b = a - 1;
+					document.getElementById("pageleft").src="../MEDIAMANGA/" + b + ".png";
+					document.getElementById("pageright").src="../MEDIAMANGA/" + a + ".png";
+				}
+			}
+			function pageflip2(){
+				if(a-2>=0){
+					a = a - 2;
+					var b = a - 1;
+					document.getElementById("pageleft").src="../MEDIAMANGA/" + b + ".png";
+					document.getElementById("pageright").src="../MEDIAMANGA/" + a + ".png";
+				}
+			}
+		</script>
+		<style>
+			img{
+			height:100%;
+			width: 50%;
+			}
+			body{
+			display: flex;
+			}
+			#pagleft{
+				width: 50%;
+			}
+			#pagright{
+				width: 50%;
+			}
+			#contatore{
+				height: 30px;
+				width: 30px;
+				background-color: red;
+			}
+			#npagina{
+				color: black;
+			}
+		</style>
+			
+	</head>
+	<body>
+		<img src="../MEDIAMANGA/-1.png" id="pageleft" onclick="pageflip2()">
+		<img src="../MEDIAMANGA/0.png" id="pageright" onclick="pageflip()">
+	</body>
+</html>

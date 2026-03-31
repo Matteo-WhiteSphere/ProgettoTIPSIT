@@ -1,0 +1,206 @@
+<html>
+<head>
+<title>Libro 2 pagine html</title>
+
+<style>
+
+body{
+    background-image:url("../MEDIA/sfondo.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1{
+    text-align:center;
+    font-size:50px;
+    color:rgb(132,85,4);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+/* CONTENITORE GENERALE */
+.contenitore-libro{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:40px;
+    margin-top:30px;
+}
+
+/* AREA DELLE PAGINE */
+.area-pagine{
+    width:60%;
+    display:flex;
+}
+
+/* PAGINA */
+.pagina{
+    display:none;
+    width:50%;
+    height:550px;
+    justify-content:center;
+    align-items:center;
+}
+
+.pagina img{
+    max-width:100%;
+    height:auto;
+}
+
+/* BOTTONI */
+.scorrimento{
+    width:100px;
+    height:100px;
+    background-color:white;
+    border-radius:35px;
+    border:3.5px solid rgb(132,85,4);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0;
+    cursor:pointer;
+}
+
+button:hover{
+    transform:scale(1.15);
+}
+
+.freccia{
+    width:75%;
+}
+
+#numpagina{
+    text-align:center;
+    color:rgb(132,85,4);
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+.unaPagina{
+    cursor: pointer;
+    width: 100px;
+    margin: 0 auto;
+    display:flex;
+    justify-content: center;
+    background-color: white;
+    border-radius: 35px;
+    border:3.5px solid rgb(132, 85, 4);
+    color: rgb(132,85,4);
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>Il diario che sussurrava il tesoro della curiosità</h1>
+
+<button onclick="location.href='1pagina.html';" type="button" class="unaPagina">
+    Visualizza una pagina 
+</button>
+
+<div class="contenitore-libro">
+
+<button onclick="scorripagina(-2)" id="sx" class="scorrimento">
+<img class="freccia" src="../MEDIA/frecciaSX.png">
+</button>
+
+<div class="area-pagine">
+
+<div class="pagina"><img src="../MEDIA/copertina.jpg"></div>
+<div class="pagina"><img src="../MEDIA/crediti.png"></div>
+<div class="pagina"><img src="../MEDIA/capitolo1.jpg"></div>
+<div class="pagina"><img src="../MEDIA/capitolo2.jpg"></div>
+<div class="pagina"><img src="../MEDIA/capitolo3.jpg"></div>
+<div class="pagina"><img src="../MEDIA/capitolo4.jpg"></div>
+<div class="pagina"><img src="../MEDIA/capitolo5.jpg"></div>
+<div class="pagina"><img src="../MEDIA/capitolo6.jpg"></div>
+
+</div>
+
+<button onclick="scorripagina(2)" id="dx" class="scorrimento">
+<img class="freccia" src="../MEDIA/frecciaDX.png">
+</button>
+
+</div>
+
+<p id="numpagina"></p>
+
+<!-- AUDIO -->
+<audio id="audioRiassunto" src="../MEDIA/riassunto.mp3"></audio>
+
+<script>
+
+var i = 0;
+var pagine = document.getElementsByClassName("pagina");
+var numpagina = document.getElementById("numpagina");
+var bottoneSX = document.getElementById("sx");
+var bottoneDX = document.getElementById("dx");
+var audio = document.getElementById("audioRiassunto");
+
+function mostraPagine(){
+
+for (var j=0;j<pagine.length;j++){
+    pagine[j].style.display="none";
+}
+
+pagine[i].style.display="flex";
+
+if(i+1 < pagine.length){
+    pagine[i+1].style.display="flex";
+}
+
+numpagina.innerHTML="Pagine "+(i+1)+"-"+(i+2)+" di "+pagine.length;
+
+if(i==0){
+    bottoneSX.style.visibility="hidden";
+}else{
+    bottoneSX.style.visibility="visible";
+}
+
+if(i+2 >= pagine.length){
+    bottoneDX.style.visibility="hidden";
+}else{
+    bottoneDX.style.visibility="visible";
+}
+
+}
+
+function scorripagina(direzione){
+
+i=i+direzione;
+
+if(i<0){
+    i=0;
+}
+
+if(i>=pagine.length){
+    i=pagine.length-2;
+}
+
+mostraPagine();
+
+}
+
+/* CLICK + CURSORE */
+for (let k = 0; k < pagine.length; k++) {
+    pagine[k].addEventListener("click", function() {
+        
+        if (k === 0 || k === 1) {
+            audio.currentTime = 0;
+            audio.play();
+        }
+
+    });
+
+    // Aggiunge il cursor pointer SOLO alle prime due pagine
+    if (k === 0 || k === 1) {
+        pagine[k].style.cursor = "pointer";
+    }
+}
+
+mostraPagine();
+
+</script>
+
+</body>
+</html>
